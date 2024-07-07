@@ -1,0 +1,29 @@
+name: Development Env
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Install Package
+        run: bun install
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: deployment
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: dockerfiles/dev.dockerfile
+          push: false

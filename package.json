@@ -1,0 +1,28 @@
+{
+  "name": "storage-service",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@elysiajs/eden": "^1.0.14",
+    "@types/bun": "latest",
+    "eslint": "^9.6.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.3.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "elysia": "^1.0.27"
+  },
+  "scripts": {
+    "dev": "bun --watch --hot --env-file .env src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "bun build/index.js",
+    "prepare": "husky install",
+    "prettier": "prettier --write src/",
+    "lint:test": "eslint src",
+    "lint": "eslint --fix src",
+    "test": "tsc --noEmit test/**/*.ts"
+  }
+}

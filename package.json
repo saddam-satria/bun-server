@@ -13,6 +13,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
+    "@elysiajs/jwt": "^1.0.2",
     "elysia": "^1.0.27"
   },
   "scripts": {
